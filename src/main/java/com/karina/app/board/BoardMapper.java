@@ -13,6 +13,13 @@ public interface BoardMapper {
 
 	public BoardDTO detail(BoardDTO boardDTO) throws Exception;
 	
-	//
+	//create
+	public int create(BoardDTO boardDTO)throws Exception;
+	
+	//update
+	public int update(BoardDTO boardDTO)throws Exception;
+	
+	//delete
+	public int delete(BoardDTO boardDTO)throws Exception;
 
 }

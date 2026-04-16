@@ -1,6 +1,7 @@
 package com.karina.app.board.notice;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
 
 import java.util.List;
 
@@ -15,15 +16,29 @@ class NoticeMapperTest {
 	@Autowired
 	private NoticeMapper noticeMapper;
 	
+	
 	@Test
+	void testCreate() throws Exception{
+		
+		for(int i=0;i<23;i++) {
+		NoticeDTO noticeDTO= new NoticeDTO();
+		noticeDTO.setBoardTitle("title"+1);
+		noticeDTO.setBoardTitle("writer"+1);
+		noticeDTO.setBoardTitle("contents"+1);
+		
+		noticeMapper.create(noticeDTO);
+		if(i%3==0) {
+			Thread.sleep(500);
+		}
+		}
+		System.out.println("Finish");
+	}
+	//@Test
 	void testList() throws Exception{
 		List<BoardDTO> ar=noticeMapper.list();
 		assertNotEquals(0, ar.size());
 	}
 
-	//@Test
-	void testDetail() {
-		fail("Not yet implemented");
-	}
+	
 
 }

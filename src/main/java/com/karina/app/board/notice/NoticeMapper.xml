@@ -10,6 +10,11 @@
   select * from "TB_NOTICE"
   </select>
   
+  <insert id="create" parameterType="NoticeDTO">
+  insert into "TB_NOTICE"
+  values (default,#{boardTitle},#{boardWriter},#{boardContents},NOW(),0)
+  </insert>
+  
   
   
   
