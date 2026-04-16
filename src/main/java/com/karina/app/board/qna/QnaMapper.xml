@@ -11,6 +11,11 @@
   SELECT * FROM "TB_QNA";
   </select>
   
+  <insert id="create" parameterType="QnaDTO">
+  INSERT INTO "TB_QNA"
+  VALUES(DEFAULT,#{boardTitle},#{boardWriter},#{boardContents},now(),0,0,0,0)
+  </insert>
+  
   
   
   

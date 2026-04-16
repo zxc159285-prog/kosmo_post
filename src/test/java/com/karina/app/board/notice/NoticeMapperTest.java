@@ -23,8 +23,8 @@ class NoticeMapperTest {
 		for(int i=0;i<23;i++) {
 		NoticeDTO noticeDTO= new NoticeDTO();
 		noticeDTO.setBoardTitle("title"+1);
-		noticeDTO.setBoardTitle("writer"+1);
-		noticeDTO.setBoardTitle("contents"+1);
+		noticeDTO.setBoardWriter("writer"+1);
+		noticeDTO.setBoardContents("contents"+1);
 		
 		noticeMapper.create(noticeDTO);
 		if(i%3==0) {
