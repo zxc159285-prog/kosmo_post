@@ -39,7 +39,7 @@
   INSERT INTO "TB_NOTICE"
   VALUES (DEFAULT,#{boardTitle},#{boardWriter},#{boardContents},NOW(),0)
   </insert>
-  <insert id="createFile" parameterType="NoticeFileDTO">
+  <insert id="createFile" parameterType="NoticeFileDTO"> <!-- 위에서 글을작성하는 insert에 키를 두개주고 그키에담긴 보드넘을 가져온다 -->
   INSERT INTO "TB_NOTICEFILE"
   VALUES (DEFAULT,#{fileName},#{oriName},#{boardNum})
   </insert>
