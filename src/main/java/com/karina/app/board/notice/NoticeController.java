@@ -1,8 +1,51 @@
 package com.karina.app.board.notice;
 
-import org.springframework.stereotype.Controller;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.karina.app.board.BoardDTO;
+import com.karina.app.pager.Pager;
+
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
 @Controller
+@RequestMapping("/notice/*")//어떤 url이 왔을떄 얘를 실행할것인가 /밑에 notice밑에 모든것
 public class NoticeController {
+	
+	@Autowired
+	private NoticeService noticeService;
+	
+//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ멤버변수
+	@GetMapping("list") //notice밑에 list라는 url이 왔을때
+	public String list(Pager pager,Model model) throws Exception{
+		List<BoardDTO> ar =noticeService.list(pager); //서비스에 리턴해주는 값이 List<BoardDTO>니까
+		
+		model.addAttribute("list", ar);
+		//페이저도 담아줘야하는데 Modelattribute("pager")이 생략되어있다
+		
+		return "board/list";
+	}
+	@GetMapping("create")
+	public String create()throws Exception{
+		
+		return "board/create";
+	}
+	@PostMapping("create")
+	public String create(NoticeDTO noticeDTO,@RequestParam("attach") MultipartFile[]attach)throws Exception{
+		
+		int result=noticeService.create(noticeDTO, attach);
+		
+		
+		return "redirect:./list";
+	}
+	
 
 }

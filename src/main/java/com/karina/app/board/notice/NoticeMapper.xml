@@ -5,17 +5,45 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.karina.app.board.notice.NoticeMapper">
-  
-  <select id="list" resultType="NoticeDTO">
-  select * from "TB_NOTICE"
+  <!-- 검색하는걸 따로 뺴놓고 데서도 쓰자 -->
+  <sql id="search_sql">
+  WHERE
+  <choose>
+  <when test="kind=='v2'">"BOARD_CONTENTS"</when>
+  <when test="kind=='v3'">"BOARD_WRITER"</when>
+  <otherwise>"BOARD_TITLE"</otherwise>
+  </choose>
+	 LIKE CONCAT('%',#{search},'%')
+  </sql>
+  <!-- 여기까지 -->
+  <!-- 블록만들기 -->
+  <select id="getCount" resultType="Long" parameterType="Pager">
+  SELECT COUNT("BOARD_NUM") FROM "TB_NOTICE"
+  <include refid="search_sql"></include>
   </select>
+  <!-- 블록만들기 끝 -->
   
-  <insert id="create" parameterType="NoticeDTO">
-  insert into "TB_NOTICE"
-  values (default,#{boardTitle},#{boardWriter},#{boardContents},NOW(),0)
+   <!-- 리스트 시작 페이지 계산은 서비스에서 해야하지만 parameter값은 한개만들어올수있고, 
+   두개가들어와야하기떄문에 컬렉션(리스트or맵or배열)또는 bean을 사용해야하고,
+   공통적으로 다른패키지에서도 써야하기떄문에 bean을 이용한 pager를 따로 만들어서 한다-->
+  <select id="list" resultType="NoticeDTO" parameterType="Pager">
+  SELECT * FROM "TB_NOTICE"
+ 	<include refid="search_sql"></include>
+  ORDER BY "BOARD_NUM" DESC
+  LIMIT #{perPage} OFFSET #{startNum};
+  </select>
+  <!-- 리스트 끝 -->
+  
+   <!-- 크리에이트 시작 -->
+  <insert id="create" parameterType="NoticeDTO" useGeneratedKeys="true" keyProperty="boardNum"><!-- 디폴트된 보드넘값을 키프로퍼티에 담는다 -->
+  INSERT INTO "TB_NOTICE"
+  VALUES (DEFAULT,#{boardTitle},#{boardWriter},#{boardContents},NOW(),0)
   </insert>
-  
-  
+  <insert id="createFile" parameterType="NoticeFileDTO">
+  INSERT INTO "TB_NOTICEFILE"
+  VALUES (DEFAULT,#{fileName},#{oriName},#{boardNum})
+  </insert>
+   <!-- 크리에이트 끝 -->
   
   
   
