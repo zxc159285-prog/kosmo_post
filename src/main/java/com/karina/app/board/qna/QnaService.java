@@ -76,7 +76,7 @@ public class QnaService implements BoardService {
 			qnaMapper.fileDelete(fileDTO);
 		}
 
-		qnaMapper.fileDeleteFor(boardDTO);
+		qnaMapper.fileDeleteFor(boardDTO.getList());
 		// DB에서 삭제
 		int result = qnaMapper.delete(boardDTO);
 		return result;

@@ -1,5 +1,7 @@
 package com.karina.app.board.qna;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.karina.app.board.BoardDTO;
@@ -10,7 +12,7 @@ public interface QnaMapper extends BoardMapper{
 
 	public int fileDelete(FileDTO fileDTO) throws Exception;
 	
-	public int fileDeleteFor(BoardDTO boardDTO) throws Exception;
+	public int fileDeleteFor(List<FileDTO>list) throws Exception;
 		
 		
 
