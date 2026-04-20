@@ -60,21 +60,21 @@ public class QnaService implements BoardService{
 	}
 
 	@Override
-	public int update(BoardDTO boardDTO) throws Exception {
+	public int update(BoardDTO boardDTO,MultipartFile[]attach) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public int delete(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
+		
 		return 0;
 	}
 
 	@Override
 	public BoardDTO detail(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return qnaMapper.detail(boardDTO);
 	}
 	
 	

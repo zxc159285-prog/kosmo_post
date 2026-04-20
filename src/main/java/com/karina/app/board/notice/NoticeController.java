@@ -3,9 +3,11 @@ package com.karina.app.board.notice;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,13 +25,21 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 	
+	@Value("${app.board.notice}")
+	private String name;
+	
+	@ModelAttribute("name")
+	public String getName() {
+		return this.name;
+	}
+	
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ멤버변수
 	@GetMapping("list") //notice밑에 list라는 url이 왔을때
 	public String list(Pager pager,Model model) throws Exception{
-		List<BoardDTO> ar =noticeService.list(pager); //서비스에 리턴해주는 값이 List<BoardDTO>니까
+		List<BoardDTO> ar =noticeService.list(pager); //서비스에서 리턴해주는 값이 List<BoardDTO>니까
 		
 		model.addAttribute("list", ar);
-		//페이저도 담아줘야하는데 Modelattribute("pager")이 생략되어있다
+		//페이저도 담아줘야하는데 매개변수 Pager 앞에 @Modelattribute("pager")이 생략되어있다
 		
 		return "board/list";
 	}
@@ -46,6 +56,25 @@ public class NoticeController {
 		
 		return "redirect:./list";
 	}
+	@GetMapping("detail")
+	public String detail(NoticeDTO noticeDTO,Model model)throws Exception{
+		BoardDTO boardDTO=noticeService.detail(noticeDTO);
+		model.addAttribute("detail", boardDTO);
+		return "board/detail";
+	}
 	
+	@GetMapping("update")
+	public String update(NoticeDTO noticeDTO,Model model)throws Exception{
+		BoardDTO boardDTO=noticeService.detail(noticeDTO);
+		model.addAttribute("update",boardDTO);
+		return "board/update";
+	}
+	@PostMapping("update")
+	public String update(NoticeDTO noticeDTO,@RequestParam("attach") MultipartFile[]attach)throws Exception{
+		int result=noticeService.update(noticeDTO,attach);
+		return "redirect:./list";
+		
+	}
+
 
 }

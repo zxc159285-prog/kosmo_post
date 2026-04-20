@@ -58,9 +58,9 @@ public class NoticeService implements BoardService{ //서비스를 구현할땐 
 	}
 
 	@Override
-	public int update(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+	public int update(BoardDTO boardDTO,MultipartFile[]attach) throws Exception {
+		int result=noticeMapper.update(boardDTO);
+		return result;
 	}
 
 	@Override
@@ -71,8 +71,8 @@ public class NoticeService implements BoardService{ //서비스를 구현할땐 
 
 	@Override
 	public BoardDTO detail(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return noticeMapper.detail(boardDTO);
 	}
 	
 	

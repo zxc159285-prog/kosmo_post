@@ -2,6 +2,9 @@ package com.karina.app.board;
 
 
 import java.time.LocalDateTime;
+import java.util.List;
+
+import com.karina.app.file.FileDTO;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -18,4 +21,8 @@ public class BoardDTO {
 	private String boardContents;
 	private LocalDateTime boardDate;
 	private Long boardHit;
+	
+	
+	//파일 인서트용
+	private List<FileDTO> list; 
 }
