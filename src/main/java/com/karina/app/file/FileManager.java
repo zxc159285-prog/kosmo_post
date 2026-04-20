@@ -15,6 +15,14 @@ public class FileManager {
 	@Value("${app.upload.base}")
 	private String path;
 	
+	//파일삭제
+	public boolean fileDelete(String name,FileDTO fileDTO)throws Exception{
+		File file=new File(path,name);//경로를 담는다
+		file=new File(file,fileDTO.getFileName()); //경로를담은 파일+파일이름을 꺼낸다
+		
+		return file.delete();
+	}
+	
 	public String fileSave(String name,MultipartFile mf)throws Exception{
 		//1. 어디에 저장할것인가
 		File file=new File(path,name);

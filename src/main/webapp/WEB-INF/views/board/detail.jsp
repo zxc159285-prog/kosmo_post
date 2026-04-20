@@ -41,7 +41,7 @@
 					
 					<div ><a class="btn btn-info" href ="./update?boardNum=${detail.boardNum}">공지수정</a>
 						<form action="./delete" method="post">
-						<input type="hidden" name="noticeNo" value="${detail.boardNum}">
+						<input type="hidden" name="boardNum" value="${detail.boardNum}">
 						
 						<button class="btn btn-warning" type="submit">삭제</button>
 					

@@ -75,7 +75,10 @@ SET "BOARD_TITLE" = #{boardTitle},
 	WHERE "BOARD_NUM" = #{boardNum}
 </update>  
   
-  
+  <delete id="delete" parameterType="NoticeDTO">
+  DELETE FROM "TB_NOTICE"
+  WHERE "BOARD_NUM"=#{boardNum}
+  </delete>
   
   
   

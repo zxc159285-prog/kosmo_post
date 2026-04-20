@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.karina.app.board.BoardDTO;
 import com.karina.app.board.BoardService;
+import com.karina.app.file.FileDTO;
 import com.karina.app.file.FileManager;
 import com.karina.app.pager.Pager;
 
@@ -65,8 +66,15 @@ public class NoticeService implements BoardService{ //서비스를 구현할땐 
 
 	@Override
 	public int delete(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		//파일명 조회
+		boardDTO=noticeMapper.detail(boardDTO);
+		// 하드디스크에서 파일삭제
+		for(FileDTO fileDTO:boardDTO.getList()) {
+			fileManager.fileDelete(name, fileDTO);
+		}
+		//DB에서 삭제
+		int result=noticeMapper.delete(boardDTO);
+		return result;
 	}
 
 	@Override
