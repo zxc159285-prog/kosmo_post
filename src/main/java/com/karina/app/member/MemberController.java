@@ -17,6 +17,14 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;//이렇게해도 impl이 가능하다
 	
+	@GetMapping("mypage")
+	public String mypage() throws Exception{
+		
+	
+		
+		return "member/mypage";
+	}
+	
 	@GetMapping("join")
 	public void join() throws Exception{
 	}
@@ -45,4 +53,5 @@ public class MemberController {
 		session.invalidate();//세션의 유지시간을 0으로 만들어준다
 		return "redirect:/";
 	}
+	
 }
