@@ -19,7 +19,7 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">회원가입페이지</h1>
+					<h1 class="h3 mb-4 text-gray-800">로그인</h1>
 
 					<div>
 						<form action="./login " method="Post"

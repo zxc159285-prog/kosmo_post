@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!-- Topbar -->
 <nav
 	class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -28,6 +28,7 @@
 
 	<!-- Topbar Navbar -->
 	<ul class="navbar-nav ml-auto">
+	<c:if test="${not empty member}">
 
 		<!-- Nav Item - Search Dropdown (Visible Only XS) -->
 		<li class="nav-item dropdown no-arrow d-sm-none"><a
@@ -166,9 +167,8 @@
 			class="nav-link dropdown-toggle" href="#" id="userDropdown"
 			role="button" data-toggle="dropdown" aria-haspopup="true"
 			aria-expanded="false"> <span
-				class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas
-					McGee</span> <img class="img-profile rounded-circle"
-				src="/img/undraw_profile.svg">
+				class="mr-2 d-none d-lg-inline text-gray-600 small">${member.name}</span><img class="img-profile rounded-circle"
+				src="/files/member/${member.profileDTO.fileName}">
 		</a> <!-- Dropdown - User Information -->
 			<div
 				class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -189,7 +189,17 @@
 				</a>
 			</div></li>
 
+	</c:if>
+	<c:if test="${empty member}">
+	<li class="nav-item mx-3">
+		<a href="/member/join"><i class="fas fa-user-plus"></i></a>
+	</li>
+	<li class="nav-item  mx-3">
+		<a href="/member/login"><i class="fas fa-user-check"></i></a>
+	</li>
+	</c:if>
 	</ul>
-
+	
+	
 </nav>
 <!-- End of Topbar -->
