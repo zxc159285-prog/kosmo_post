@@ -64,7 +64,7 @@
 									type="date" class="form-control" id="birth" name="birth">
 							</div>
 							<div class="form-group">
-								<label>첨부파일</label> <input type="file" name="attach"
+								<label>프로필사진</label> <input type="file" name="attach"
 									class="form-control">
 							</div>
 

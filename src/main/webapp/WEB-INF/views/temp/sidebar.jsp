@@ -40,7 +40,7 @@
 			data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
 				<a class="collapse-item" href="/notice/list">공지사항</a> 
-				<a class="collapse-item" href="cards.html">Cards</a>
+				<a class="collapse-item" href="/product/list">상품목록</a>
 			</div>
 		</div></li>
 

@@ -57,10 +57,10 @@
 							</div>
 
 						</c:forEach>
-
+					
 
 					</div>
-					
+					<div><a href="./create" class="btn btn-danger">상품등록</a></div>
 					<div class="row justify-content-center">
 					
 					
