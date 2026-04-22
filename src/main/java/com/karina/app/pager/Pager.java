@@ -31,7 +31,7 @@ public class Pager {
 		if (perPage == null || perPage < 1) {
 			this.perPage = 5L;
 		}
-		return this.perPage;
+		return perPage;
 	}
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
