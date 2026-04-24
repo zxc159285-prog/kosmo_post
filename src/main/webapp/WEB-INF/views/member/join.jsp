@@ -25,39 +25,49 @@
 						<form action="./join" method="Post" enctype="multipart/form-data">
 							<div class="input-group flex-nowrap">
 								<div class="input-group-prepend">
-									<span class="input-group-text" id="username">ID</span>
+									<span class="input-group-text">이름</span>
 								</div>
-								<input type="text" class="form-control" name="username"
-									aria-label="username" aria-describedby="addon-wrapping">
+								<input type="text" class="form-control" id="name1" name="name">
 							</div>
+							<div id="name2" class="error-msg"></div>
+							
 							<div class="input-group flex-nowrap">
 								<div class="input-group-prepend">
-									<span class="input-group-text" id="name">이름</span>
+									<span class="input-group-text">ID</span>
 								</div>
-								<input type="text" class="form-control" name="name"
-									aria-label="name" aria-describedby="addon-wrapping">
+								<input type="text" class="form-control" id="username" name="username">
 							</div>
+							<div id="username2" class="error-msg"></div>
+							
 							<div class="input-group flex-nowrap">
 								<div class="input-group-prepend">
-									<span class="input-group-text" id="password">PW</span>
+									<span class="input-group-text">PW</span>
 								</div>
-								<input type="password" class="form-control" name="password"
-									aria-label="password" aria-describedby="addon-wrapping">
+								<input type="password" class="form-control" id="pw" name="password">
 							</div>
+							<div id="pw2" class="error-msg"></div>
+							
+							<div class="input-group flex-nowrap">
+								<div class="input-group-prepend">
+									<span class="input-group-text">PWCheck</span>
+								</div>
+								<input type="password" class="form-control" id="pwcheck" name="passwordCheck">
+							</div>
+							<div id="pwcheck2" class="error-msg"></div>
 
 							<div class="input-group flex-nowrap">
 								<div class="input-group-prepend">
-									<span class="input-group-text" id="phone">PhoneNumber</span>
+									<span class="input-group-text">PhoneNumber</span>
 								</div>
-								<input type="text" class="form-control" name="phone"
-									aria-label="phone" aria-describedby="addon-wrapping">
+								<input type="text" id="phone" class="form-control" name="phone"
+									>
 							</div>
 							<div class="input-group flex-nowrap">
 								<div class="input-group-prepend">
-									<span class="input-group-text" id="email">email</span>
+									<span class="input-group-text">email</span>
 								</div>
-								<input type="email" class="form-control" name="email"
-									aria-label="email" aria-describedby="addon-wrapping">
+								<input type="email" id="email" class="form-control" name="email"
+									>
 							</div>
 							<div class="mb-3">
 								<label for="birth" class="form-label">생년월일</label> <input
@@ -68,7 +78,7 @@
 									class="form-control">
 							</div>
 
-							<button type="submit" class="btn btn-primary">가입</button>
+							<button type="button" id="btn" class="btn btn-primary">가입</button>
 						</form>
 					</div>
 
@@ -82,5 +92,7 @@
 	</div>
 	<!-- End wrapper -->
 	<c:import url="/WEB-INF/views/temp/footer_script.jsp"></c:import>
+
+	<script src="/js/member/join.js"></script>
 </body>
 </html>

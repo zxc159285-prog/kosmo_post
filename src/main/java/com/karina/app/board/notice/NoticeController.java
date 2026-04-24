@@ -49,18 +49,30 @@ public class NoticeController {
 		return "board/create";
 	}
 	@PostMapping("create")
-	public String create(NoticeDTO noticeDTO,@RequestParam("attach") MultipartFile[]attach)throws Exception{
+	public String create(NoticeDTO noticeDTO,@RequestParam("attach") MultipartFile[]attach,Model model)throws Exception{
 		
 		int result=noticeService.create(noticeDTO, attach);
+		if(result>0) {
+			model.addAttribute("result","글 등록 성공");
+			model.addAttribute("url","./list");
+		}
 		
 		
-		return "redirect:./list";
+		
+		return "commons/result";
 	}
 	@GetMapping("detail")
 	public String detail(NoticeDTO noticeDTO,Model model)throws Exception{
 		BoardDTO boardDTO=noticeService.detail(noticeDTO);
+		if(boardDTO==null) {
+			model.addAttribute("result","없는 글입니다");
+			model.addAttribute("url", "./list");
+			return "commons/result";
+		}else {
 		model.addAttribute("detail", boardDTO);
-		return "board/detail";
+		return "board/detail";}
+		
+		
 	}
 	
 	@GetMapping("update")
