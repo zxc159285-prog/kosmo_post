@@ -38,13 +38,12 @@
 						    <label for="boardContents">내용</label>
 						    <textarea rows="15" cols="60" name="boardContents" class="form-control" id="boardContents"></textarea>
 						  </div>
-						  <div class="form-group">
-						  	<label>첨부파일</label>
-						  	<input type="file" name="attach" class="form-control">
+						  <div>
+							<button type="button" id="add">File Add</button>
 						  </div>
-						    <div class="form-group">
-						  	<label>첨부파일</label>
-						  	<input type="file" name="attach" class="form-control">
+						  <div class="form-group" id="result">
+						  	<label id=>첨부파일</label>
+						  
 						  </div>
 						  
 						  <button type="submit" class="btn btn-primary">저장하기</button>
@@ -70,5 +69,7 @@
         height: 100
       });
     </script>
+
+	<script src="/js/board/form.js"></script>
 </body>
 </html>
