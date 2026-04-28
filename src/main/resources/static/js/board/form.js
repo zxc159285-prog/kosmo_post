@@ -5,6 +5,23 @@ const result=document.getElementById("result")
 
 let x = 1
 
+const create=document.getElementById("create")
+
+// create.addEventListener("click",()=>{
+//     let form= new FormData()//비어있는 <form> </form>을 만든거랑 같음
+//     form.append("boardTitle","ajax title") //<input type="text">
+//     form.append("boardWriter","ajax Writer")
+//     form.append("boardContents","ajax Contents")
+
+//     fetch("./create",{
+//         method:"POST",
+//         body:form
+//     })
+//     .then(res=>res.text())
+//     .then(res=>console.log(res))
+
+
+// })
 
 add.addEventListener("click",function(){
     const count=result.children.length

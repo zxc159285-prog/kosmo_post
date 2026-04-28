@@ -46,7 +46,7 @@
 						  
 						  </div>
 						  
-						  <button type="submit" class="btn btn-primary">저장하기</button>
+						  <button id="create" type="submit" class="btn btn-primary">저장하기</button>
 						
 					</form>
 					</div>

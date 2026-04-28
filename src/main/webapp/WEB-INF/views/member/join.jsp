@@ -38,6 +38,7 @@
 								<input type="text" class="form-control" id="username" name="username">
 							</div>
 							<div id="username2" class="error-msg"></div>
+							<div id="username3" class="error-msg"></div>
 							
 							<div class="input-group flex-nowrap">
 								<div class="input-group-prepend">

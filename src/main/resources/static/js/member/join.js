@@ -22,8 +22,28 @@ const pw=document.getElementById("pw")
 const pw2=document.getElementById("pw2")
 const pwcheck=document.getElementById("pwcheck")
 const pwcheck2=document.getElementById("pwcheck2")
+const username3=document.getElementById("username3")
+username.addEventListener("change",function(){
+    fetch(`./idCheck?username=${username.value}`)
+    .then(res=>res.text())
+    .then(res=>{
+    if(res.trim()==='1'){
+        username3.innerText="사용가능"
+        
+        
+        c[1]=1
 
+    }
+    else{
+        alert("중복된 아이디입니다")
+        c[1]=0
+    }
+
+})
+
+})
 username.addEventListener("blur",function(){
+
    if(username.value.trim()==""){
     username2.innerText="필수입력"
     c[1]=0
