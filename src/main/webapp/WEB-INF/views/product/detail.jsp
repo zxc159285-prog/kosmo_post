@@ -25,6 +25,7 @@
 					<h3>설명 : ${dto.productContents}</h3>
 					<h3>이율 : ${dto.productRate}</h3>
 					<a href="../account/create?productNum=${dto.productNum}" class="btn btn-primary">상품가입</a>
+					<button id="cart" data-pn="${dto.productNum}" class="btn btn-danger">담기</button>
 
 				</div>
 				<!-- End Page Container-fluid-->
@@ -36,5 +37,6 @@
 	</div>
 	<!-- End wrapper -->
 	<c:import url="/WEB-INF/views/temp/footer_script.jsp"></c:import>
+	<script src="/js/cart/cart.js"></script>
 </body>
 </html>

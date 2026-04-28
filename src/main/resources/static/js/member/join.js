@@ -27,6 +27,12 @@ username.addEventListener("change",function(){
     fetch(`./idCheck?username=${username.value}`)
     .then(res=>res.text())
     .then(res=>{
+
+    if(username.value.trim()==""){
+        username3.innerText=""
+        c[1]=0
+        return
+    }
     if(res.trim()==='1'){
         username3.innerText="사용가능"
         
