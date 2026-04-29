@@ -35,27 +35,10 @@
 						</div>
 					</div>
 
-					<div class="row">
+					<div class="row" id="list">
 					
 					
-						<c:forEach items="${list}" var="p" varStatus="i">
-							<div class="col-4">
-								<div class="card" style="width: 18rem;">
-								<div class="card-header">
-									<input type="checkbox" id="ch${i.index}" class="dlist"><button id="del" class="btn btn-info">삭제</button>
-								</div>
-									<img src="/files/product/${name}/${p.productFileDTO.fileName}"
-										class="card-img-top" alt="...">
-									<div class="card-body">
-										<h5 class="card-title">${p.productName}</h5>
-
-										<a href="./detail?productNum=${p.productNum}"
-											class="btn btn-primary">상세보기</a>
-									</div>
-								</div>
-							</div>
-
-						</c:forEach>
+					
 					
 
 					</div>

@@ -35,7 +35,17 @@
   		</association>
   	
   	</resultMap>
-  
+  	
+<!--   	<delete id="delete" parameterType="CartDTO">
+  	DELETE FROM "TB_CART"
+  	WHERE "USERNAME"=#{username} AND "PRODUCT_NUM"=#{productNum}	
+  	</delete> -->
+    	<delete id="delete" parameterType="java.util.List">
+  	DELETE FROM "TB_CART"
+  	<foreach collection="list" item="item" open="WHERE" separator="or" >
+  		"USERNAME"=#{item.username} AND "PRODUCT_NUM"=#{item.productNum}	
+  	</foreach>
+  	</delete>
   
   
   </mapper>

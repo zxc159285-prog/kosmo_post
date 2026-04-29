@@ -23,7 +23,8 @@ cart.addEventListener("click",()=>{
     if(r>0){
        let move=confirm("장바구니로 이동할까요?")
        if(move){
-       alert("이동")}
+        location.href="../cart/list"
+       }
     }else{}
 })
 })
