@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.karina.app.member.MemberDTO;
 
@@ -21,6 +22,7 @@ public class ReviewController {
 	private ReviewService reviewService;
 	
 	@GetMapping("reviewlist")
+	
 	public void list(ReviewDTO reviewDTO,Model model) throws Exception{
 		
 		List<ReviewDTO> ar= reviewService.list(reviewDTO);
@@ -31,25 +33,28 @@ public class ReviewController {
 	public void list() throws Exception{}
 	
 	@PostMapping("create")
-	public String create(HttpSession session,ReviewDTO reviewDTO,Model model)throws Exception{
+	@ResponseBody //리턴으로 나가는걸json으로 jsp를 안거치고바로 내보내겠다
+	public int create(HttpSession session,ReviewDTO reviewDTO,Model model)throws Exception{
 		MemberDTO memberDTO=(MemberDTO)session.getAttribute("member");
 		reviewDTO.setUsername(memberDTO.getUsername());		
 		int result=reviewService.create(reviewDTO);
 		model.addAttribute("result", result);
-		return "commons/ajaxResult";
+		return result;
 	}
 	
 	@PostMapping("delete")
-	public String delete(ReviewDTO reviewDTO,Model model) throws Exception{
+	@ResponseBody
+	public int delete(ReviewDTO reviewDTO,Model model) throws Exception{
 		int result = reviewService.delete(reviewDTO);
 		model.addAttribute("result", result);
-		return "commons/ajaxResult";
+		return result;
 	}
 	
 	@PostMapping("update")
-	public String update(ReviewDTO reviewDTO,Model model)throws Exception{
+	@ResponseBody
+	public int update(ReviewDTO reviewDTO,Model model)throws Exception{
 		int result= reviewService.update(reviewDTO);
 		model.addAttribute("result", result);
-		return "commons/ajaxResult";
+		return result;
 	}
 }

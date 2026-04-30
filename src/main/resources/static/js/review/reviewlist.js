@@ -28,7 +28,7 @@ update_btn.addEventListener("click",()=>{
     if(r>0){
         getlist(pn)
         contents_update.innerText=""
-        document.getElementById("close").click()
+        // document.getElementById("close").click()
     }
     else{
         alert("수정실패")
