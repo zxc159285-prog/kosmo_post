@@ -31,9 +31,30 @@
 					<div id="review_list">
 					
 					</div>
+					<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="reviewStar" value="option5">
+  <label class="form-check-label" for="inlineCheckbox1">⭐5</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="reviewStar" value="option4">
+  <label class="form-check-label" for="inlineCheckbox2">⭐4</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="reviewStar" value="option3">
+  <label class="form-check-label" for="inlineCheckbox3">⭐3</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="reviewStar" value="option2">
+  <label class="form-check-label" for="inlineCheckbox4">⭐2</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="reviewStar" value="option1">
+  <label class="form-check-label" for="inlineCheckbox5">⭐1</label>
+</div>
+
 					<div>
-					<textarea rows="6" cols=""></textarea>
-					<button>등록</button>
+					<textarea id="contents" rows="6" cols=""></textarea>
+					<button id="add">등록</button>
 					</div>
 
 				</div>
@@ -45,6 +66,30 @@
 		<!-- End Content-wrapper -->
 	</div>
 	<!-- End wrapper -->
+	<!-- Modal -->
+<div>
+<div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <textarea rows="" cols="" id="contents_update"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" id="update_btn">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
 	<c:import url="/WEB-INF/views/temp/footer_script.jsp"></c:import>
 	<script src="/js/cart/cart.js"></script>
 	<script src="/js/review/reviewlist.js"></script>

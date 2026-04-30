@@ -14,7 +14,15 @@ public class ReviewService {
 		
 		return reviewMapper.list(reviewDTO);
 	}
-	public int create()throws Exception{
-		return reviewMapper.create();
+	public int create(ReviewDTO reviewDTO)throws Exception{
+		return reviewMapper.create(reviewDTO);
+	}
+	
+	public int delete(ReviewDTO reviewDTO) throws Exception{
+		return reviewMapper.delete(reviewDTO);
+	}
+	
+	public int update(ReviewDTO reviewDTO)throws Exception{
+		return reviewMapper.update(reviewDTO);
 	}
 }

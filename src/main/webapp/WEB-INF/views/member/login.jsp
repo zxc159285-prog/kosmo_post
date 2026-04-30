@@ -29,7 +29,7 @@
 									<span class="input-group-text" id="username">ID</span>
 								</div>
 								<input type="text" class="form-control" name="username"
-									aria-label="username" aria-describedby="addon-wrapping">
+									aria-label="username" value="zxc1234" aria-describedby="addon-wrapping">
 							</div>
 
 							<div class="input-group flex-nowrap">
@@ -37,7 +37,7 @@
 									<span class="input-group-text" id="password">PW</span>
 								</div>
 								<input type="password" class="form-control" name="password"
-									aria-label="password" aria-describedby="addon-wrapping">
+									aria-label="password" value="zxc1234" aria-describedby="addon-wrapping">
 							</div>
 
 

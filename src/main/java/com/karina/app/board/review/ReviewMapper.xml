@@ -13,7 +13,17 @@
 
 	<insert id="create" parameterType="ReviewDTO">
 		INSERT INTO "TB_REVIEW"
-		VALUES (DEFAULT,#[productNum],#{productStar},#{productContents},#{username},now())
+		VALUES (DEFAULT,#{productNum},#{reviewStar},#{reviewContents},#{username},now())
 	</insert>
 
+	<delete id="delete" parameterType="ReviewDTO">
+		DELETE FROM "TB_REVIEW"
+		WHERE "REVIEW_NUM"=#{reviewNum} 
+	</delete>
+	
+	<update id="update" parameterType="ReviewDTO">
+	UPDATE "TB_REVIEW"
+	SET "REVIEW_CONTENTS"=#{reviewContents}
+	WHERE "REVIEW_NUM"=#{reviewNum}
+	</update>
 </mapper>

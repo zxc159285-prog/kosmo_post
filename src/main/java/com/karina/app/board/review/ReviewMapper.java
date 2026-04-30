@@ -8,5 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface ReviewMapper {
 
 	public List<ReviewDTO> list(ReviewDTO reviewDTO)throws Exception;
-	public int create()throws Exception;
+	public int create(ReviewDTO reviewDTO)throws Exception;
+	public int delete(ReviewDTO reviewDTO)throws Exception;
+	public int update(ReviewDTO reviewDTO)throws Exception;
 }
