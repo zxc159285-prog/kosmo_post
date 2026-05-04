@@ -62,7 +62,7 @@ public class NoticeController {
 	@GetMapping("create")
 	public String create()throws Exception{
 		
-		return "board/create";
+		return "board/board_form";
 	}
 	@PostMapping("create")
 	public String create(NoticeDTO noticeDTO,@RequestParam(value="attach",required=false) MultipartFile[]attach,Model model)throws Exception{
@@ -95,10 +95,10 @@ public class NoticeController {
 	public String update(NoticeDTO noticeDTO,Model model)throws Exception{
 		BoardDTO boardDTO=noticeService.detail(noticeDTO);
 		model.addAttribute("update",boardDTO);
-		return "board/update";
+		return "board/board_form";
 	}
 	@PostMapping("update")
-	public ModelAndView update(NoticeDTO noticeDTO,@RequestParam("attach") MultipartFile[]attach,Model model)throws Exception{
+	public ModelAndView update(NoticeDTO noticeDTO,@RequestParam(value="attach",required=false)MultipartFile[]attach,Model model)throws Exception{
 		int result=noticeService.update(noticeDTO,attach);
 		ModelAndView mv= new ModelAndView();
 		mv.setViewName("redirect:./list");

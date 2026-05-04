@@ -22,13 +22,16 @@ const create=document.getElementById("create")
 
 
 // })
+let count=result.getAttribute("data-file-size")
 
 add.addEventListener("click",function(){
-    const count=result.children.length
-
-    if(count<6){
-
-    let d = document.createElement("div")
+    
+	
+    if(count>4){
+		alert("첨부파일은 최대 5개까지만 추가 가능합니다.") 
+   
+}
+else{ let d = document.createElement("div")
     let i = document.createElement("input")
     let b = document.createElement("button")
     
@@ -44,9 +47,8 @@ add.addEventListener("click",function(){
     d.append(i,b)
 
 x++
-    result.append(d)
-}
-else{ alert("첨부파일은 최대 5개까지만 추가 가능합니다.") }
+count++
+    result.append(d)}
 })
 result.addEventListener("click",function(e){
     let di= e.target.getAttribute("data-id")
