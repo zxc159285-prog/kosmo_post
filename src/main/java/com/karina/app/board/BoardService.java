@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.karina.app.file.FileDTO;
 import com.karina.app.pager.Pager;
 
 public interface BoardService {
@@ -21,4 +22,7 @@ public interface BoardService {
 	
 	//read
 	public BoardDTO detail(BoardDTO boardDTO) throws Exception;
+	
+	//fileDetail
+	public FileDTO fileDetail(FileDTO fileDTO)throws Exception;
 }

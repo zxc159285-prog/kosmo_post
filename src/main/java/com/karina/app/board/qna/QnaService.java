@@ -25,6 +25,12 @@ public class QnaService implements BoardService {
 	@Value("${app.board.qna}")
 	private String name;
 
+	
+	@Override
+	public FileDTO fileDetail(FileDTO fileDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return qnaMapper.fileDetail(fileDTO);
+	}
 	@Override
 	public List<BoardDTO> list(Pager pager) throws Exception {
 

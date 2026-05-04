@@ -6,6 +6,11 @@
 
 
 <mapper namespace="com.karina.app.board.qna.QnaMapper">
+	<select id="fileDetail" parameterType="FileDTO" resultType="FileDTO">
+	SELECT * FROM "TB_QNAFILE"
+	WHERE "FILE_NUM"=${fileNum}
+	</select>
+	
 	<sql id="search_sql">
 		WHERE
 

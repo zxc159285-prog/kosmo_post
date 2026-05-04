@@ -83,6 +83,11 @@ public class NoticeService implements BoardService{ //서비스를 구현할땐 
 		return noticeMapper.detail(boardDTO);
 	}
 	
+	@Override
+		public FileDTO fileDetail(FileDTO fileDTO) throws Exception {
+			// TODO Auto-generated method stub
+			return noticeMapper.fileDetail(fileDTO);
+		}
 	
 
 }

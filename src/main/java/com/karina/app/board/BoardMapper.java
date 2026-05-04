@@ -26,5 +26,8 @@ public interface BoardMapper {
 	
 	//delete
 	public int delete(BoardDTO boardDTO)throws Exception;
+	
+	//fileDetail
+	public FileDTO fileDetail(FileDTO fileDTO)throws Exception;
 
 }

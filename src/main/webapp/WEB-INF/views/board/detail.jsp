@@ -32,7 +32,7 @@
 									</div>
 									<div>
 										<c:forEach items="${detail.list}" var="f">
-										<h4><img class="col-10"src="/files/${name}/${f.fileName}"> ${f.oriName}</h4>
+										<h6><a href="./down?fileNum=${f.fileNum}"> ${f.oriName} </a></h6>
 										</c:forEach>
 									</div>
 					

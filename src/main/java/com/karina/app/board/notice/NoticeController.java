@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.karina.app.board.BoardDTO;
+import com.karina.app.file.FileDTO;
 import com.karina.app.pager.Pager;
 
 import lombok.extern.slf4j.Slf4j;
@@ -35,6 +36,16 @@ public class NoticeController {
 		return this.name;
 	}
 	
+//-------------------------------------------------------------첨부파일 다운로드
+	@GetMapping("down")
+	public String fileDown(NoticeFileDTO noticeFileDTO,Model model) throws Exception{
+		
+		FileDTO fileDTO =noticeService.fileDetail(noticeFileDTO);
+		
+		model.addAttribute("fileDTO", fileDTO);
+		//모델은 키와 벨류, 키는 문자열 ,벨류는 객체
+		return "fileDownView";
+	}
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ멤버변수
 	@GetMapping("list") //notice밑에 list라는 url이 왔을때
 	public String list(Pager pager,Model model) throws Exception{

@@ -3,6 +3,7 @@ package com.karina.app.board.qna;
 import com.karina.app.board.BoardDTO;
 import com.karina.app.board.notice.NoticeDTO;
 import com.karina.app.board.notice.NoticeService;
+import com.karina.app.file.FileDTO;
 import com.karina.app.pager.Pager;
 
 import java.util.List;
@@ -38,6 +39,15 @@ public class QnaController {
     QnaController(NoticeService noticeService) {
         this.noticeService = noticeService;
     }
+    @GetMapping("down")
+    public String fileDown(QnaFileDTO qnaFileDTO,Model model)throws Exception{
+    	FileDTO fileDTO=qnaService.fileDetail(qnaFileDTO);
+    	
+    	model.addAttribute("fileDTO", fileDTO);
+    	
+    	return "fileDownView";
+    }
+    
 	@GetMapping("list")
 	public String list(Pager pager,Model model) throws Exception{
 		List<BoardDTO> ar=qnaService.list(pager);
