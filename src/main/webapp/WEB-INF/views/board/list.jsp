@@ -49,6 +49,7 @@
 								<tr>
 									<th>공지번호</th>
 									<th>제목</th>
+									<th>작성자</th>
 									<th>작성일</th>
 								</tr>
 							</thead>
@@ -60,7 +61,7 @@
 										<td>${d.boardNum}</td>
 										<c:catch>
 										<td><c:forEach begin="1" end="${d.boardDepth}">--</c:forEach></c:catch><a href="./detail?boardNum=${d.boardNum}">${d.boardTitle}</a></td>
-										
+										<td>${d.boardWriter}</td>
 										<td>${d.boardDate}</td>
 									
 									</tr>

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.karina.app.board.BoardDTO;
@@ -14,6 +15,8 @@ import com.karina.app.file.FileManager;
 import com.karina.app.pager.Pager;
 
 @Service
+@Transactional(rollbackFor = Exception.class)//중간에 문제발생시(예외발생) 진행한일을 전부 취소
+//보통 서비스에 붙힌다
 public class NoticeService implements BoardService{ //서비스를 구현할땐 implements 소스에서 오버라이드
 	@Autowired
 	private NoticeMapper noticeMapper;
@@ -30,6 +33,7 @@ public class NoticeService implements BoardService{ //서비스를 구현할땐 
 		return noticeMapper.list(pager);
 	}
 
+	
 	@Override
 	public int create(BoardDTO boardDTO,MultipartFile[]attach) throws Exception {
 		//1. 게시판 테이블에 글을 추가 글이있어야 글번호를참조해서 파일을첨부할수있음
