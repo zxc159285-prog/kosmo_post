@@ -27,7 +27,8 @@
 						<h4>${member.email}</h4>
 						<h4>${member.phone}</h4>
 					</div>
-
+					<a href="/member/update" class="btn btn-danger">수정</a>
+					
 				</div>
 				<!-- End Page Container-fluid-->
 			</div>

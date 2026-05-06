@@ -91,7 +91,7 @@ public class MemberController {
 		}
 			
 			
-		//int result = memberService.join(memberDTO, attach);
+		int result = memberService.join(memberDTO, attach);
 		
 		return "redirect:/";
 	}
