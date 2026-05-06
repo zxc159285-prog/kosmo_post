@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,18 +14,56 @@ import org.springframework.web.multipart.MultipartFile;
 import com.karina.app.board.notice.NoticeController;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @RequestMapping("/member/*")
+@Slf4j
 public class MemberController {
+
+    private final MemberServiceImpl memberServiceImpl;
 
     private final NoticeController noticeController;
 	
 	@Autowired
 	private MemberService memberService;
+	
+	//마이페이지
+	@GetMapping("mypage")
+	public void mypage()throws Exception{}
+	
+	
+	
+	//개인정보수정
+	@GetMapping("update")
+	public void update(HttpSession session,Model model)throws Exception{
+		MemberDTO memberDTO=(MemberDTO)session.getAttribute("member");
+		model.addAttribute("memberDTO",memberDTO);
+	}
+	
+	@PostMapping("update")
+	public String update(@Validated(GroupUpdate.class) MemberDTO memberDTO,BindingResult bindingResult ,HttpSession session,Model model)throws Exception{
+		
+		if(bindingResult.hasErrors()) {
+			return "member/update";
+		}
+		
+		MemberDTO s=(MemberDTO)session.getAttribute("member");
+		memberDTO.setUsername(s.getUsername());
+		
+		int result=memberServiceImpl.update(memberDTO);
+		if(result>0) {
+			s=memberServiceImpl.detail(s);
+			session.setAttribute("member", s);
+		}
+		return "redirect:/";
+	}
+	
+	
 
-    MemberController(NoticeController noticeController) {
+    MemberController(NoticeController noticeController, MemberServiceImpl memberServiceImpl) {
         this.noticeController = noticeController;
+        this.memberServiceImpl = memberServiceImpl;
     }//이렇게해도 impl이 가능하다
 	
 	@GetMapping("idCheck")
@@ -40,14 +79,18 @@ public class MemberController {
 	}
 	
 	@GetMapping("join")
-	public void join() throws Exception{
+	public void join(MemberDTO memberDTO) throws Exception{
 	}
+	
 	@PostMapping("join")
-	public String join(@Valid MemberDTO memberDTO,BindingResult bindingResult,@RequestParam("attach") MultipartFile attach) throws Exception{
-		if(bindingResult.hasErrors()) {
-			System.out.println("검증실패");
+	public String join(@Validated(GroupAdd.class) MemberDTO memberDTO,BindingResult bindingResult,@RequestParam("attach") MultipartFile attach) throws Exception{
+		
+		if(memberServiceImpl.doubleCheck(memberDTO, bindingResult)) {
+			
 			return "member/join";
 		}
+			
+			
 		//int result = memberService.join(memberDTO, attach);
 		
 		return "redirect:/";
@@ -59,13 +102,11 @@ public class MemberController {
 	}
 
 	@PostMapping("login")
-	public String login(@Valid MemberDTO memberDTO,BindingResult bindingResult, HttpSession session) throws Exception{
+	public String login(MemberDTO memberDTO, HttpSession session) throws Exception{
 		
-		if(bindingResult.hasErrors()) {
-			return "member/login";
-		}
 		
-		//memberDTO=memberService.detail(memberDTO);
+		
+		memberDTO=memberService.detail(memberDTO);
 		if(memberDTO != null) {
 			session.setAttribute("member",memberDTO);
 		}

@@ -17,20 +17,24 @@ import lombok.ToString;
 @ToString
 public class MemberDTO {
 
-	@NotBlank //최소한 한글자 이상은 되야합니다 라는 뜻
+	@NotBlank(groups = GroupAdd.class) //최소한 한글자 이상은 되야합니다 라는 뜻
 	private String username;
-	//@NotBlank
+	@NotBlank(groups = {GroupAdd.class, GroupUpdate.class})
 	private String name;
 	
-	@Size(max=11,min=4) //최소4글자이상 11글자이하
-	@NotBlank
+	@Size(groups = GroupAdd.class,max=11,min=4) //최소4글자이상 11글자이하
+	@NotBlank(groups = GroupAdd.class)
 	private String password;
+	//db에 안넣고 패스워드와 비교해보기위한것
+	private String passwordCheck;
 	
 	private String phone;
-	//@Email //이메일표현식 이어야한다
+	@Email(groups = {GroupAdd.class, GroupUpdate.class}) //이메일표현식 이어야한다
 	private String email;
-	//@Past//현재보다 이전으로 해야한다 반대로 미래를 골라야한다면 @퓨쳐
+	@Past(groups = {GroupAdd.class, GroupUpdate.class})//현재보다 이전으로 해야한다 반대로 미래를 골라야한다면 @퓨쳐
 	private LocalDate birth;
+	
+	
 	
 	// 회원 한명당 하나의 프로필을 가지고있다.  만약 여러개를 가지고있다면 리스트로한다
 	private ProfileDTO profileDTO;

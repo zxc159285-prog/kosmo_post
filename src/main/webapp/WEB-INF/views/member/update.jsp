@@ -20,7 +20,7 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">회원가입페이지</h1>
+					<h1 class="h3 mb-4 text-gray-800">정보 수정</h1>
 
 					<div>
 					<form:form method="post" modelAttribute="memberDTO" enctype="multipart/form-data">
@@ -32,38 +32,7 @@
 							</div>
 							<div id="name2" class="error-msg"></div>
 							<form:errors path="name"></form:errors>
-					
-							<div class="input-group flex-nowrap">
-								<div class="input-group-prepend">
-									<span class="input-group-text">ID</span>
-								</div>
-								<form:input path="username" cssClass="form-control" id="username" />
-							</div>
-							<div id="username2" class="error-msg"></div>
-						<div id="username3" class="error-msg"></div>
-						<form:errors path="username"></form:errors>
-					
-					
-							<div class="input-group flex-nowrap">
-								<div class="input-group-prepend">
-									<span class="input-group-text">PW</span>
-								</div>
-								<form:password path="password" cssClass="form-control" id="pw"/>
-							</div>
-							<div id="pw2" class="error-msg"></div>
-							<form:errors path="password"></form:errors>
-							
-							
-							<div class="input-group flex-nowrap">
-								<div class="input-group-prepend">
-									<span class="input-group-text">PWCheck</span>
-								</div>
-								<form:password path="passwordCheck" cssClass="form-control" id="pwcheck"/>
-							</div>
-							<div id="pwcheck2" class="error-msg"></div>
-							<div>
-							<form:errors path="passwordCheck"></form:errors>
-							</div>
+								
 							
 							<div class="input-group flex-nowrap">
 								<div class="input-group-prepend">
@@ -83,7 +52,7 @@
 							<form:errors path="email"></form:errors>
 							
 							<div class="mb-3">
-								<label for="birth" class="form-label">생년월일</label> <input
+								<label for="birth" class="form-label">생년월일</label> <input value="${member.birth}"
 									type="date" class="form-control" id="birth" name="birth">
 							</div>
 							<form:errors path="birth"></form:errors>
@@ -92,7 +61,7 @@
 								<label>프로필사진</label> <input type="file" name="attach" class="form-control">
 							</div>
 
-							<button type="submit" id="btn" class="btn btn-primary">가입</button>
+							<button type="submit" id="btn" class="btn btn-primary">수정</button>
 					</form:form>
 					</div>
 
