@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="jakarta.tags.core"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html>
@@ -79,7 +80,7 @@
 									class="form-control">
 							</div>
 
-							<button type="button" id="btn" class="btn btn-primary">가입</button>
+							<button type="submit" id="btn" class="btn btn-primary">가입</button>
 						</form>
 					</div>
 
@@ -93,7 +94,8 @@
 	</div>
 	<!-- End wrapper -->
 	<c:import url="/WEB-INF/views/temp/footer_script.jsp"></c:import>
-
-	<script src="/js/member/join.js"></script>
+	
+	<script type="text/javascript"></script>
+	<!-- <script src="/js/member/join.js"></script> -->
 </body>
 </html>

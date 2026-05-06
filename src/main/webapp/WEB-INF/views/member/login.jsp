@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="jakarta.tags.core"%>
-
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,27 +22,28 @@
 					<h1 class="h3 mb-4 text-gray-800">로그인</h1>
 
 					<div>
-						<form action="./login " method="Post"
-							enctype="multipart/form-data">
-							<div class="input-group flex-nowrap">
+						<form:form action="./login" modelAttribute="memberDTO" method="post" enctype="multipart/form-data">
 								<div class="input-group-prepend">
-									<span class="input-group-text" id="username">ID</span>
-								</div>
-								<input type="text" class="form-control" name="username"
-									aria-label="username" value="zxc1234" aria-describedby="addon-wrapping">
+								<label class="input-group-text" id="username">ID</label>
+								<form:input path="username" cssClass="form-control" id="username"/>
+								
 							</div>
-
-							<div class="input-group flex-nowrap">
+							<div><form:errors path="username"></form:errors></div>
+						
 								<div class="input-group-prepend">
 									<span class="input-group-text" id="password">PW</span>
-								</div>
-								<input type="password" class="form-control" name="password"
-									aria-label="password" value="zxc1234" aria-describedby="addon-wrapping">
+								<form:password path="password" cssClass="form-control"/>
 							</div>
-
-
+							<div><form:errors path="password"></form:errors></div>
 							<button type="submit" class="btn btn-primary">로그인</button>
-						</form>
+							
+						</form:form>
+						
+
+
+
+							
+						
 					</div>
 
 				</div>

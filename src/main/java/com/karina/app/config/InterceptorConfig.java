@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+
 import com.karina.app.intorceptors.LoginCheckInterceptor;
 
 import com.karina.app.intorceptors.WriterCheckInterceptor;
@@ -14,7 +16,9 @@ public class InterceptorConfig implements WebMvcConfigurer {
 	@Autowired
     private final LoginCheckInterceptor loginCheckInterceptor;
 
-
+	@Autowired
+	private LocaleChangeInterceptor localeChangeInterceptor;
+	
 	@Autowired 
 	private WriterCheckInterceptor writerCheckInterceptor;
 	
@@ -42,6 +46,9 @@ public class InterceptorConfig implements WebMvcConfigurer {
 		
 		registry.addInterceptor(writerCheckInterceptor)
 				.addPathPatterns("/notice/update","/qna/update");
+		
+		registry.addInterceptor(localeChangeInterceptor)
+				.addPathPatterns("/**");
 	}
 		
 }
