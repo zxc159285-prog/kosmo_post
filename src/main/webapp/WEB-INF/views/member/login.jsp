@@ -22,22 +22,22 @@
 					<h1 class="h3 mb-4 text-gray-800">로그인</h1>
 
 					<div>
-						<form:form action="./login" modelAttribute="memberDTO" method="post" enctype="multipart/form-data">
+						<form action="./login" method="post" enctype="multipart/form-data">
 								<div class="input-group-prepend">
 								<label class="input-group-text" id="username">ID</label>
-								<form:input path="username" cssClass="form-control" id="username"/>
+								<input type="text" name="username" class="form-control" id="username"/>
 								
 							</div>
-							<div><form:errors path="username"></form:errors></div>
+							
 						
 								<div class="input-group-prepend">
 									<span class="input-group-text" id="password">PW</span>
-								<form:password path="password" cssClass="form-control"/>
+								<input type="password" name="password" class="form-control"/>
 							</div>
-							<div><form:errors path="password"></form:errors></div>
+							
 							<button type="submit" class="btn btn-primary">로그인</button>
 							
-						</form:form>
+						</form>
 						
 
 

@@ -2,14 +2,21 @@ package com.karina.app.member;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.karina.app.file.FileManager;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
-public class MemberServiceImpl implements MemberService {
+@Slf4j
+public class MemberServiceImpl implements MemberService,UserDetailsService{
 	
 	@Autowired
 	private MemberMapper memberMapper;
@@ -19,6 +26,21 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Value("${app.member}")
 	private String name;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		MemberDTO memberDTO= new MemberDTO();
+		memberDTO.setUsername(username);
+		
+		memberDTO=memberMapper.detail(memberDTO);
+		log.info("{}",memberDTO);
+		return memberMapper.detail(memberDTO);
+		
+	}
+	
 	
 	@Override
 	public int update(MemberDTO memberDTO) throws Exception {
@@ -61,7 +83,8 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Override
 	public int join(MemberDTO memberDTO, MultipartFile file) throws Exception {
-		//db에 저장
+		//db에 저장(인코더를이용해 패스워드를 암호화해서)
+		memberDTO.setPassword(passwordEncoder.encode(memberDTO.getPassword()));
 		int result =memberMapper.join(memberDTO);
 		//profile 이미지를 하드디스크에 저장
 		if(file !=null && !file.isEmpty()) {

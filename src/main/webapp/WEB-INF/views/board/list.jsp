@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="jakarta.tags.core"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html>
@@ -92,10 +93,21 @@
 						
 							
 						</div>
-						
+						<c:if test="${name eq 'notice'}">
+						<sec:authorize access="hasRole('ADMIN')">
 						<div>
 							<a href ="./create">${name}작성</a>
 						</div>
+						</sec:authorize>
+						</c:if>
+						
+						<c:if test="${name ne 'notice'}">
+						<sec:authorize access="hasRole('MEMBER')">
+						<div>
+							<a href ="./create">${name}작성</a>
+						</div>
+						</sec:authorize>
+						</c:if>
 					</div>
 					</div>
 					<!-- 내용 끝 -->

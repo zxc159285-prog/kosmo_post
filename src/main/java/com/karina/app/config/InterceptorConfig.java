@@ -38,11 +38,11 @@ public class InterceptorConfig implements WebMvcConfigurer {
 		//member로 시작하는 모든 url, login, join
 		//qna list를 제외한 모든것
 		//상품가임,장바구니
-		registry.addInterceptor(loginCheckInterceptor)
-				.addPathPatterns("/member/*")
-				.addPathPatterns("/qna/*")
-				.excludePathPatterns("/member/login","/member/join")
-				.excludePathPatterns("/qna/list");	
+//		registry.addInterceptor(loginCheckInterceptor)
+//				.addPathPatterns("/member/*")
+//				.addPathPatterns("/qna/*")
+//				.excludePathPatterns("/member/login","/member/join")
+//				.excludePathPatterns("/qna/list");	
 		
 		registry.addInterceptor(writerCheckInterceptor)
 				.addPathPatterns("/notice/update","/qna/update");

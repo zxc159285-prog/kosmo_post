@@ -97,24 +97,14 @@ public class MemberController {
 	}
 	
 	@GetMapping("login")
-	public void login(@ModelAttribute MemberDTO memberDTO) throws Exception{
+	public void login() throws Exception{
 		
 	}
 
-	@PostMapping("login")
-	public String login(MemberDTO memberDTO, HttpSession session) throws Exception{
-		
-		
-		
-		memberDTO=memberService.detail(memberDTO);
-		if(memberDTO != null) {
-			session.setAttribute("member",memberDTO);
-		}
-		return "redirect:/";
-	}
-	@GetMapping("logout")
-	public String logout(HttpSession session)throws Exception{
-		session.invalidate();//세션의 유지시간을 0으로 만들어준다
-		return "redirect:/";
-	}
+
+//	@GetMapping("logout")
+//	public String logout(HttpSession session)throws Exception{
+//		session.invalidate();//세션의 유지시간을 0으로 만들어준다
+//		return "redirect:/";
+//	}
 }
