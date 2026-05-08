@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="jakarta.tags.core"%>
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,28 +22,40 @@
 					<h1 class="h3 mb-4 text-gray-800">로그인</h1>
 
 					<div>
+					<div><h3>${param.message}</h3></div>
 						<form action="./login" method="post" enctype="multipart/form-data">
-								<div class="input-group-prepend">
-								<label class="input-group-text" id="username">ID</label>
-								<input type="text" name="username" class="form-control" id="username"/>
-								
+							<div class="input-group-prepend">
+								<label class="input-group-text" id="username">ID</label> <input
+									type="text" name="username" class="form-control" id="username" value="${cookie.rememberId.value}" />
+							</div>
+
+
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="password">PW</span> <input
+									type="password" name="password" class="form-control" />
 							</div>
 							
-						
-								<div class="input-group-prepend">
-									<span class="input-group-text" id="password">PW</span>
-								<input type="password" name="password" class="form-control"/>
+							<div class="form-group form-check">
+								<input type="checkbox" name="rememberId" value="1" class="form-check-input"
+									id="exampleCheck1"> <label class="form-check-label"
+									for="exampleCheck1">ID기억하기</label>
+							</div>
+							
+							<div class="form-group form-check">
+								<input type="checkbox" name="rememberMe" class="form-check-input"
+									id="exampleCheck1"> <label class="form-check-label"
+									for="exampleCheck1">로그인 유지</label>
 							</div>
 							
 							<button type="submit" class="btn btn-primary">로그인</button>
-							
+
 						</form>
-						
 
 
 
-							
-						
+
+
+
 					</div>
 
 				</div>
